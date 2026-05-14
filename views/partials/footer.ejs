@@ -72,7 +72,7 @@
          <div class="footer-copyright">
           <ul>
             <li style="border-right: 2px solid black"><a href="">Security</a></li>
-            <li style="border-right: 2px solid black"><a href="">Privacy</a></li>
+            <li style="border-right: 2px solid black"><a href="/privacy">Privacy</a></li>
             <li><a href="">Terms</a></li>
           </ul>  
          <p class="footer-taskify-inc">© Taskify Inc.</p>
@@ -83,6 +83,20 @@
             
         
     </footer>
+    <% if (!cookiesAccepted) { %>
+<div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #2c3e50; color: white; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: sans-serif;">
+    <p style="margin: 0; font-size: 14px;">🍪 We use cookies to enhance your experience. By continuing to use this site, you agree to our <a href="/privacy" style="color: #ffd700; text-decoration: underline;">Privacy Policy</a>.</p>
+    <button id="accept-cookies" style="background: #ffd700; color: #2c3e50; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">Accept</button>
+</div>
+
+<script>
+    document.getElementById('accept-cookies').onclick = function() {
+        document.cookie = "cookies_accepted=true; path=/; max-age=" + (60*60*24*365);
+        document.getElementById('cookie-banner').style.display = 'none';
+    };
+</script>
+<% } %>
     
   </body>
+ 
 </html>
