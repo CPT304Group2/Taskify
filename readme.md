@@ -1,4 +1,4 @@
-
+[![codecov](https://codecov.io/gh/CPT304Group2/Taskify/graph/badge.svg?token=VCWVPRO9LV)](https://codecov.io/gh/CPT304Group2/Taskify)
 
 <div align="center">
   <h1>Welcome to Taskify 👋💻</h1>
