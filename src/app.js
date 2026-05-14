@@ -25,15 +25,11 @@ app.get("/signup", (req, res) => {
     res.status(200).render("signup.ejs");
 });
 
-// In Future this dashboard will be rendered after authentication of users 
-app.get("/dashboard", (req, res) => {
-    res.status(200).render("dashboard/dashboard.ejs");
-});
-
-
-
-
-//* listen
-app.listen(port, () => {
-    console.log(`The application started successfully on port ${port}`);
-});
+// Start server
+const PORT = process.env.PORT || 3000;
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}
+module.exports = app;
