@@ -18,18 +18,28 @@
 
         <nav>
           <ul class="nav-items">
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Templates</a></li>
-            <li><a href="#">For Teams</a></li>
-            <li><a href="#">Resources</a></li>
-            <li><a href="#">Pricing</a></li>
+            <li><a href="#"><%= t('nav_features') %></a></li>
+            <li><a href="#"><%= t('nav_templates') %></a></li>
+            <li><a href="#"><%= t('nav_for_teams') %></a></li>
+            <li><a href="#"><%= t('nav_resources') %></a></li>
+            <li><a href="#"><%= t('nav_pricing') %></a></li>
           </ul>
         </nav>
         <div class="nav-buttons">
-          <a href="/signup" class="btn1 nav-btn">Sign Up</a>
-          <a href="/dashboard" class="btn2 nav-btn">Log In</a>
+          <a href="/signup" class="btn1 nav-btn"><%= t('nav_signup') %></a>
+          <a href="/dashboard" class="btn2 nav-btn"><%= t('nav_login') %></a>
+        </div>
+        <div class="language-switch">
+          <button onclick="switchLanguage('en')">English</button>
+          <button onclick="switchLanguage('zh')">中文</button>
         </div>
       </div>
     </header>
+    <script>
+    function switchLanguage(lang) {
+        document.cookie = "lang=" + lang + "; path=/";
+        window.location.reload();
+    }
+    </script>
   </body>
 </html>
