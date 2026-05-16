@@ -7,7 +7,32 @@ body{
 	min-height: 100vh;
 	font-family: 'Nunito', sans-serif;
 	background: linear-gradient(to bottom, #ffffff, #ffffff, #ffffff);
+	position: relative;
 }
+
+.language-toggle-container {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 1000;
+}
+
+.language-btn {
+	padding: 8px 16px;
+	background: #8558c0;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	transition: background 0.3s ease;
+}
+
+.language-btn:hover {
+	background: #512d93;
+}
+
 .main{
 	width: 350px;
 	height: 500px;
