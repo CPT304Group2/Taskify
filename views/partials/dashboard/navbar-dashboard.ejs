@@ -20,7 +20,7 @@
             <button type="submit">
               <i class="fas fa-search"></i>
             </button>
-            <input type="text" placeholder="Search" />
+            <input type="text" placeholder="<%= t.dashboard_search_placeholder %>" />
           </form>
         <div class="dashboard-navbar-dashboard-links">
           <ul class="dashboard-navbar-dashboard-navbar-links">
@@ -31,12 +31,17 @@
               <a href="#" class="dashboard-navbar-bell-icon"><i class="far fa-bell"></i></a>
             </li>
             <li>
+              <button id="language-toggle" class="language-btn" title="切换语言 / Switch Language">
+                <%= lang === 'zh' ? 'EN' : '中文' %>
+              </button>
+            </li>
+            <li>
               <div class="dashboard-navbar-dropdown">
                 <button onclick="myFunction()" class="dashboard-navbar-dropbtn">Lord Voldemort <i class="fa-solid fa-chevron-down"></i></button>
                 
                 <div id="dashboard-navbar-myDropdown" class="dashboard-navbar-dropdown-content">
-                  <a href="#" style="font-size: 16px;">Profile</a>
-                  <a href="#" style="font-size: 16px;">Log Out</a>
+                  <a href="#" style="font-size: 16px;"><%= t.dashboard_profile %></a>
+                  <a href="#" style="font-size: 16px;"><%= t.dashboard_logout %></a>
                 </div>
               </div>
             </li>
@@ -70,5 +75,26 @@ window.onclick = function(event) {
     }
   }
 }
+
+// Language toggle functionality
+document.getElementById('language-toggle').addEventListener('click', function() {
+  const currentLang = '<%= lang %>';
+  const newLang = currentLang === 'en' ? 'zh' : 'en';
+  
+  fetch('/switch-language', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ language: newLang })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      location.reload();
+    }
+  })
+  .catch(error => console.error('Error:', error));
+});
 </script>
 </html>
