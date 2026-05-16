@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../static/styles/signup.css" />
+  <title>SignUp</title>
+</head>
+
+<body>
+  <div class="language-toggle-container">
+    <button id="language-toggle" class="language-btn" title="切换语言 / Switch Language">
+      <%= lang === 'zh' ? 'EN' : '中文' %>
+    </button>
+  </div>
+
+  <section class="section signup-section">
+    <div class="container signup-container">
+      <div class="main">
+        <input type="checkbox" id="chk" aria-hidden="true" />
+
+        <div class="signup">
+          <form method="post" action="/signup">
+            <label for="chk" aria-hidden="true"><%= t.signup_title %></label>
+            <div class="signup-username">
+              <input type="text" name="SignUpUsername" placeholder="<%= t.signup_username %>" required="true" />
+            </div>
+            <div class="signup-email">
+              <input type="email" name="SignUpEmail" placeholder="<%= t.signup_email %>" required="true" />
+            </div>
+            <div class="signup-password">
+              <input type="password" name="SignUpPassword" placeholder="<%= t.signup_password %>" required="true" />
+            </div>
+            <div>
+              <input class="button" name="SignUpSubmit" type="submit" value="<%= t.signup_submit %>" />
+            </div>
+          </form>
+        </div>
+        <div class="login">
+          <form method="post" action="/login">
+            <label for="chk" aria-hidden="true"><%= t.login_title %></label>
+            <div class="signup-email">
+              <input type="email" name="LoginEmail" placeholder="<%= t.login_email %>" required="true" />
+            </div>
+            <div class="signup-password">
+              <input type="password" name="LoginPassword" placeholder="<%= t.login_password %>" required="true" />
+            </div>
+            <!-- <button href="/auth">Log In</button> -->
+            <div>
+              <input class="button" name="LoginSubmit" type="submit" value="<%= t.login_submit %>" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+<script>
+  document.getElementById('language-toggle').addEventListener('click', function() {
+    const currentLang = '<%= lang %>';
+    const newLang = currentLang === 'en' ? 'zh' : 'en';
+    
+    fetch('/switch-language', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ language: newLang })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        location.reload();
+      }
+    })
+    .catch(error => console.error('Error:', error));
+  });
+</script>
+
+</html>
