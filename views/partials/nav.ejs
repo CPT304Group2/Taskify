@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/styles/main.css">
+    <link rel="stylesheet" href="../../static/styles/partials/nav.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="container navbar-container">
+        <a href="/" class="logo-wrapper">
+          <img src="../../static/assets/logo.png" alt="logo" class="logo" />
+          <h1 class="nav-title">Taskify</h1>
+        </a>
+
+        <nav>
+          <ul class="nav-items">
+            <li><a href="#" data-i18n="nav_features"><%= t.nav_features %></a></li>
+            <li><a href="#" data-i18n="nav_templates"><%= t.nav_templates %></a></li>
+            <li><a href="#" data-i18n="nav_for_teams"><%= t.nav_for_teams %></a></li>
+            <li><a href="#" data-i18n="nav_resources"><%= t.nav_resources %></a></li>
+            <li><a href="#" data-i18n="nav_pricing"><%= t.nav_pricing %></a></li>
+          </ul>
+        </nav>
+        <div class="nav-buttons">
+          <button id="language-toggle" class="language-btn" title="切换语言 / Switch Language">
+            <%= lang === 'zh' ? 'EN' : '中文' %>
+          </button>
+          <a href="/signup" class="btn1 nav-btn" data-i18n="nav_signup"><%= t.nav_signup %></a>
+          <a href="/dashboard" class="btn2 nav-btn" data-i18n="nav_login"><%= t.nav_login %></a>
+        </div>
+      </div>
+    </header>
+    <script>
+      document.getElementById('language-toggle').addEventListener('click', function() {
+        const currentLang = '<%= lang %>';
+        const newLang = currentLang === 'en' ? 'zh' : 'en';
+        
+        fetch('/switch-language', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ language: newLang })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            location.reload();
+          }
+        })
+        .catch(error => console.error('Error:', error));
+      });
+    </script>
+  </body>
+</html>
