@@ -17,7 +17,7 @@
           <div class="footer-top">
            
         <div class="footer-left-column">
-                 <p>Join millions of people who organize work and life with Taskify.</p>
+                 <p><%= t.footer_desc %></p>
                 <ul aria-label="Social links">
                     
                     <li><a aria-label="facebook" href="#"><img src="../../static/assets/facebook.png" class="footer-image" alt="Facebook"></a></li>
@@ -29,40 +29,40 @@
             
          <div class="footer-right-column">
             <div class="footer-column">
-                <h3 class="footer-heading">FEATURES</h3>
+                <h3 class="footer-heading"><%= t.footer_features %></h3>
                     <ul aria-label="Footer" role="list">
                         
-                        <li><a href="">How It Works</a></li>
-                        <li><a href="">For Teams</a></li>
-                        <li><a href="">Pricing</a></li>
-                        <li><a href="">Templates</a></li>
+                        <li><a href=""><%= t.footer_how_it_works %></a></li>
+                        <li><a href=""><%= t.footer_for_teams %></a></li>
+                        <li><a href=""><%= t.footer_pricing %></a></li>
+                        <li><a href=""><%= t.footer_templates %></a></li>
 
                     </ul>
             </div>
          <div class="footer-column">
-            <h3 class="footer-heading">RESOURCES</h3>
+            <h3 class="footer-heading"><%= t.footer_resources %></h3>
              <ul>
                 
-                <li><a href="">Download Apps</a></li>
-                <li><a href="">Help Center</a></li>
-                <li><a href="">Productivity Methods</a></li>
-                <li><a href="">Refer a friend</a></li>
-                <li><a href="">Integrations</a></li>
-                <li><a href="">Channel Partners</a></li>
-                <li><a href="">Developer API</a></li>
-                <li><a href="">Status</a></li>
+                <li><a href=""><%= t.footer_download_apps %></a></li>
+                <li><a href=""><%= t.footer_help_center %></a></li>
+                <li><a href=""><%= t.footer_productivity %></a></li>
+                <li><a href=""><%= t.footer_refer %></a></li>
+                <li><a href=""><%= t.footer_integrations %></a></li>
+                <li><a href=""><%= t.footer_partners %></a></li>
+                <li><a href=""><%= t.footer_developer %></a></li>
+                <li><a href=""><%= t.footer_status %></a></li>
 
              </ul>
          </div>
          <div class="footer-column">
-            <h3 class="footer-heading">COMPANY</h3>
+            <h3 class="footer-heading"><%= t.footer_company %></h3>
             <ul>
                 
-                <li><a href="">About Us</a></li>
-                <li><a href="">We are hiring!</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">Press</a></li>
-                <li><a href="">Twist</a></li>
+                <li><a href=""><%= t.footer_about %></a></li>
+                <li><a href=""><%= t.footer_hiring %></a></li>
+                <li><a href=""><%= t.footer_blog %></a></li>
+                <li><a href=""><%= t.footer_press %></a></li>
+                <li><a href=""><%= t.footer_twist %></a></li>
                 
 
              </ul>
@@ -71,22 +71,22 @@
         </div>
          <div class="footer-copyright">
           <ul>
-            <li style="border-right: 2px solid black"><a href="">Security</a></li>
-            <li style="border-right: 2px solid black"><a href="/privacy">Privacy</a></li>
-            <li><a href="">Terms</a></li>
+            <li style="border-right: 2px solid black"><a href=""><%= t.footer_security %></a></li>
+            <li style="border-right: 2px solid black"><a href="/privacy"><%= t.footer_privacy %></a></li>
+            <li><a href=""><%= t.footer_terms %></a></li>
           </ul>  
-         <p class="footer-taskify-inc">© Taskify Inc.</p>
+         <p class="footer-taskify-inc"><%= t.footer_copyright %></p>
 
-        
-    </div>
+
+        </div>
          </div>
             
         
     </footer>
     <% if (!cookiesAccepted) { %>
 <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #2c3e50; color: white; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; z-index: 9999; font-family: sans-serif;">
-    <p style="margin: 0; font-size: 14px;">🍪 We use cookies to enhance your experience. By continuing to use this site, you agree to our <a href="/privacy" style="color: #ffd700; text-decoration: underline;">Privacy Policy</a>.</p>
-    <button id="accept-cookies" style="background: #ffd700; color: #2c3e50; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">Accept</button>
+    <p style="margin: 0; font-size: 14px;"><%= t.cookie_message %> <a href="/privacy" style="color: #ffd700; text-decoration: underline;"><%= t.cookie_privacy %></a>.</p>
+    <button id="accept-cookies" style="background: #ffd700; color: #2c3e50; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;"><%= t.cookie_accept %></button>
 </div>
 
 <script>
